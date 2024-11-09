@@ -7,16 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.todo.dto.request.ProjectCreateRequest;
 import com.example.todo.entity.Project;
+import com.example.todo.service.projects.ProjectCreateService;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectCreateController {
 
+  private final ProjectCreateService projectCreateService;
+
+  public ProjectCreateController(ProjectCreateService projectCreateService) {
+    this.projectCreateService = projectCreateService;
+  }
+
   @PostMapping
   public ResponseEntity<Project> invoke(@Valid @RequestBody ProjectCreateRequest request) {
-    // TODO:Projectを作成するを作成するロジックを実装
-    Project project = new Project();
+    Project project = this.projectCreateService.invoke(request);
 
     return ResponseEntity.ok(project);
   }

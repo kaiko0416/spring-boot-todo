@@ -6,12 +6,12 @@ import com.example.todo.entity.Project;
 import com.example.todo.repository.ProjectRepository;
 
 @Service
-public class ProjectCreateServise {
+public class ProjectCreateService {
 
   private final ProjectRepository projectRepository;
 
 
-  public ProjectCreateServise(ProjectRepository projectRepository) {
+  public ProjectCreateService(ProjectRepository projectRepository) {
     this.projectRepository = projectRepository;
   }
 
