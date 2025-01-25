@@ -1,8 +1,11 @@
 package com.example.todo.entity;
 
 import java.time.LocalDateTime;
+import com.example.todo.enums.TaskPriority;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,15 +14,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import com.example.todo.enums.TaskPriority;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 @Data
 @Entity
 @Table(name = "tasks")
 @EqualsAndHashCode(callSuper = false) // 親クラスの equals, hashCode を使わない（これを設定しないと警告が出る）
 public class Task extends BaseEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -44,6 +45,7 @@ public class Task extends BaseEntity {
   @Column(nullable = false, columnDefinition = "SMALLINT")
   @Enumerated(EnumType.ORDINAL)
   private TaskPriority priority = TaskPriority.MEDIUM;
+
   @Column(columnDefinition = "TEXT")
   private String memo;
 
@@ -52,6 +54,5 @@ public class Task extends BaseEntity {
 
   @Column(name = "completed_at")
   private LocalDateTime completedAt;
-
 
 }

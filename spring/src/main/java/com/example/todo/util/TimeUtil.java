@@ -76,6 +76,7 @@ public class TimeUtil {
 
     private static String format(TemporalAccessor time, String format) {
       return DateTimeFormatter.ofPattern(format).format(time);
+
     }
   }
 }

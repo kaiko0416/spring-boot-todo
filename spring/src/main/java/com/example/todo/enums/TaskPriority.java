@@ -38,5 +38,6 @@ public enum TaskPriority {
     // 4. orElseThrow() で、TaskPriorityが取得できなかった場合に例外をスローする。取得できた場合はその値を返す。
     return Arrays.stream(TaskPriority.values()).filter(priority -> priority.getValue() == value)
         .findFirst().orElseThrow(() -> new IllegalArgumentException("Unexpected value: " + value));
+
   }
 }

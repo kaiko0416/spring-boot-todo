@@ -22,4 +22,5 @@ public class TaskCreateRequest {
    */
   @NotNull
   private final TaskPriority priority;
+
 }
