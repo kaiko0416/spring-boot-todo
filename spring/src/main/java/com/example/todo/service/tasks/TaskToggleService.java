@@ -15,6 +15,7 @@ public class TaskToggleService {
     this.taskRepository = taskRepository;
   }
 
+
   public TaskBaseResponse invoke(Integer id) {
     // 対象のタスクを取得する。
     Task task = this.taskRepository.findById(id)
