@@ -8,11 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import com.example.todo.enums.TaskPriority;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Data
 @Entity
@@ -37,11 +38,12 @@ public class Task extends BaseEntity {
   @Column(length = 255, nullable = false)
   private String name;
 
-  // priority は、 0, 1, 2 のいずれかの値を持つ。
-  // TODO: このフィールドは、Enum型を使って定義するように修正予定。
+  /**
+   * @Enumerated EnumType.ORDINAL を指定することで、列挙型の値をデータベースに保存する際に、列挙型のインデックス（0, 1, 2, ...）を保存する。
+   */
   @Column(nullable = false, columnDefinition = "SMALLINT")
-  private Integer priority;
-
+  @Enumerated(EnumType.ORDINAL)
+  private TaskPriority priority = TaskPriority.MEDIUM;
   @Column(columnDefinition = "TEXT")
   private String memo;
 
