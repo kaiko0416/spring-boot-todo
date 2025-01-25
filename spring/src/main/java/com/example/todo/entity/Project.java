@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 /**
  * @Data Lombokのアノテーション。クラス内の全てのフィールドに対して、getter、setter、toString、equals、hashCodeなどのメソッドを自動生成する。
  *       このアノテーションが付与されたクラスは、データクラスとして振る舞う。
