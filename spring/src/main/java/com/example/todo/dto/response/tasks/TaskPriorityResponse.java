@@ -14,8 +14,5 @@ public class TaskPriorityResponse {
     this.name = taskpriority.name();
     this.value = taskpriority.getValue();
     this.label = taskpriority.getLabel();
-
   }
-
-
 }

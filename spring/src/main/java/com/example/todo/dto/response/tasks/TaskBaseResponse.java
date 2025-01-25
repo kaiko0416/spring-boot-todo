@@ -3,12 +3,14 @@ package com.example.todo.dto.response.tasks;
 import java.time.LocalDateTime;
 import com.example.todo.entity.Project;
 import com.example.todo.entity.Task;
-import com.example.todo.enums.TaskPriority;
+import com.example.todo.util.TimeUtil;
 import lombok.Data;
 
 @Data
 public class TaskBaseResponse {
+
   private Integer id;
+
   private Project project;
 
   private String name;
@@ -17,13 +19,13 @@ public class TaskBaseResponse {
 
   private String memo;
 
-  private LocalDateTime deadlineAt;
+  private String deadlineAt;
 
-  private LocalDateTime completedAt;
+  private String completedAt;
 
-  private LocalDateTime createdAt;
+  private String createdAt;
 
-  private LocalDateTime updatedAt;
+  private String updatedAt;
 
   public TaskBaseResponse(Task task) {
     this.id = task.getId();
@@ -31,14 +33,17 @@ public class TaskBaseResponse {
     this.name = task.getName();
     this.priority = new TaskPriorityResponse(task.getPriority());
     this.memo = task.getMemo();
-    this.deadlineAt = task.getDeadlineAt();
-    this.completedAt = task.getCompletedAt();
-    this.createdAt = task.getCreatedAt();
-    this.updatedAt = task.getUpdatedAt();
-
-
+    this.deadlineAt = this.formatFromDateTimeToYmdHm(task.getDeadlineAt());
+    this.completedAt = this.formatFromDateTimeToYmdHm(task.getCompletedAt());
+    this.createdAt = this.formatFromDateTimeToYmdHm(task.getCreatedAt());
+    this.updatedAt = this.formatFromDateTimeToYmdHm(task.getUpdatedAt());
   }
 
+  private String formatFromDateTimeToYmdHm(LocalDateTime dateTime) {
+    if (dateTime == null) {
+      return null;
+    }
 
-
+    return TimeUtil.Format.toYmdHm(dateTime);
+  }
 }
