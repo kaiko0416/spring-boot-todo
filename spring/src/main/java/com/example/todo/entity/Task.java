@@ -50,6 +50,25 @@ public class Task extends BaseEntity {
   @Column(name = "deadline_at")
   private LocalDateTime deadlineAt;
 
+
+  /**
+   * タスクが完了済みかどうかを返す。
+   *
+   * @return 完了済みの場合は true、未完了の場合は false
+   */
+  public boolean isCompleted() {
+    return this.completedAt != null;
+  }
+
+  /**
+   * タスクの完了状態を切り替える。
+   *
+   * 完了済みの場合は未完了に、未完了の場合は完了済に。
+   */
+  public void toggleCompleted() {
+    this.setCompletedAt(this.isCompleted() ? null : LocalDateTime.now());
+  }
+
   @Column(name = "completed_at")
   private LocalDateTime completedAt;
 
