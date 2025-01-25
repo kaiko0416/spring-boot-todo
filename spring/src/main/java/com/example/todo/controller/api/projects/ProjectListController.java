@@ -22,7 +22,6 @@ public class ProjectListController {
   public ResponseEntity<List<Project>> invoke() {
     List<Project> projects = this.projectListService.invoke();
 
-
     return ResponseEntity.ok(projects);
   }
 }

@@ -17,5 +17,6 @@ public class ProjectListService {
   public List<Project> invoke() {
     // findAll() ... JpaRepository が提供するメソッドで、対象テーブルのデータを全件取得する。
     return this.projectRepository.findAll();
+
   }
 }
