@@ -50,5 +50,6 @@ public class TaskCreateService {
 
     // 保存したタスクEntityを元に、TaskBaseResponseを作成して返す
     return new TaskBaseResponse(savedTask);
+
   }
 }
