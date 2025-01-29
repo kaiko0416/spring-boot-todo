@@ -46,3 +46,4 @@ public class TaskUpdateRequest {
     return this.completedAt != null ? this.completedAt.toLocalDateTime() : null;
   }
 }
+
